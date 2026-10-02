@@ -414,21 +414,6 @@ zip -r qa-submission-yourname.zip . -x "node_modules/*" ".git/*"
 
 ---
 
-## ⏱️ Time Estimate
-
-| Task                  | Estimated Time |
-| --------------------- | -------------- |
-| Setup + Exploration   | 15 minutes     |
-| Bug Finding (Task 1)  | 1.5 hours      |
-| Bug Fixing (Task 2)   | 2 hours        |
-| Test Writing (Task 3) | 1.5 hours      |
-| Test Plan (Task 4)    | 30 minutes     |
-| **Total**             | **~5.5 hours** |
-
-**Deadline:** 7 days from receipt
-
----
-
 ## 📋 Evaluation Criteria
 
 | Criteria      | Weight | What We Look For                                           |
