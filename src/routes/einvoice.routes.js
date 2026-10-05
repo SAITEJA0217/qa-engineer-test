@@ -40,22 +40,19 @@ router.post('/submit', authenticate, async (req, res) => {
       return res.status(403).json({ error: 'Access denied' });
     }
 
+    // Check if invoice already submitted
+    if (invoice.einvoice_status === 'submitted' || invoice.einvoice_status === 'accepted') {
+      return res.status(409).json({ 
+        error: 'Invoice already submitted to tax authority' 
+      });
+    }
+
     // Validate B2B requirement
     if (!customer_siret || customer_siret.length !== 14) {
       return res.status(400).json({ 
         error: 'Valid customer SIRET required for e-invoicing (14 digits)' 
       });
     }
-
-    // BUG G: No duplicate submission check
-    // Should prevent submitting the same invoice twice
-    // Missing validation below:
-    
-    // if (invoice.einvoice_status === 'submitted' || invoice.einvoice_status === 'accepted') {
-    //   return res.status(409).json({ 
-    //     error: 'Invoice already submitted to tax authority' 
-    //   });
-    // }
 
     // Simulate tax authority submission
     const submission_id = `SUB-${uuidv4()}`;
